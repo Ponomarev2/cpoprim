@@ -4,20 +4,21 @@ import Menu from './Menu.vue'
 
 import { ref, reactive, onMounted } from 'vue'
 
+
 function koo(){
   console.log(document.getElementById('menu'));
   console.log(document.getElementById('menu').offsetHeight);
 }
 
+
 function DFS(node, acc){
   const tree = node.childNodes;
-  console.log(node);
-  console.log(tree);
+  if(node.class === "menu" || node.class === "menu-tab"){
+    node.style.top = -acc + 'px';
+  }
+
   if(tree.length === 0 && node.data !== ""){
-    console.log('000', acc);
-    console.log('000', node.parentNode);
     acc += node.parentNode.offsetHeight;
-    console.log('001', acc);
     return acc;
   }else{
     for (let index = 0; index < tree.length; index++) {
@@ -31,15 +32,16 @@ function DFS(node, acc){
 
 onMounted(() => {
   const tree = document.getElementById('menu').childNodes;
-  let accHeight = 0;
-  for (let index = 0; index < tree.length; index++) {
-    const elem = tree[index];
-    elem.style.top = -accHeight + 'px';
-    console.log(elem);
-    accHeight = DFS(elem, accHeight);
-    console.log(accHeight);
-    break;
-  }
+  DFS(document.getElementById('menu'), 0);
+  // let accHeight = 0;
+  // for (let index = 0; index < tree.length; index++) {
+  //   const elem = tree[index];
+  //   elem.style.top = -accHeight + 'px';
+  //   console.log(elem);
+  //   accHeight = DFS(elem, accHeight);
+  //   console.log(accHeight);
+  //   break;
+  // }
 })
 
 </script>
@@ -82,7 +84,6 @@ onMounted(() => {
 
 .sub-menu{
   left: 230px;
-  top: calc(-1.8em - 2px);
 }
 
 .menu-tab{

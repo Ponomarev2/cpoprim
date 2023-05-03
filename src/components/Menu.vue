@@ -15,15 +15,12 @@ const elems = ref([
 
 
 <template>
-  <div>
-    <div class="menu">
-      <MenuElem v-for="(item, i) in elems"
-        :key="item.id"
-        :label="'elem' + item.id"
-      />
-    </div>
+  <div class="menu">
+    <MenuElem v-for="(item, i) in elems"
+      :key="item.id"
+      :label="'elem' + item.id"
+    />
   </div>
-  
 </template>
 
 

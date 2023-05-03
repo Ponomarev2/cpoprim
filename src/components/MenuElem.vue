@@ -6,10 +6,8 @@ const props = defineProps(['label']);
 
 
 <template>
-  <div>
-    <div class="menu-elem">
+  <div class="menu-elem">
       {{ props['label'] }}
-    </div>
   </div>
   
 </template>
@@ -19,6 +17,7 @@ const props = defineProps(['label']);
 
 
 .menu-elem{
+  width: 100%;
   height: 28px;
   color: #000;
   font-size: medium;

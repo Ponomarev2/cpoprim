@@ -72,7 +72,7 @@ import Menu from './Menu.vue'
 }
 
 .content{
-  width: calc(100% - 250px);
+  width: calc(100% - 230px);
   min-height: 900px;
   height: 100%;
   background-color: greenyellow;

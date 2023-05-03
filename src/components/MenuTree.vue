@@ -4,34 +4,41 @@ import Menu from './Menu.vue'
 
 import { ref, reactive, onMounted } from 'vue'
 
+function koo(){
+  console.log(document.getElementById('menu'));
+  console.log(document.getElementById('menu').offsetHeight);
+}
 
 function DFS(node, acc){
-  let accHeight = acc;
   const tree = node.childNodes;
-  // console.log(tree);
-  if(tree.length === 0){
-    // console.log('000', accHeight);
-    return (accHeight + 28);
+  console.log(node);
+  console.log(tree);
+  if(tree.length === 0 && node.data !== ""){
+    console.log('000', acc);
+    console.log('000', node.parentNode);
+    acc += node.parentNode.offsetHeight;
+    console.log('001', acc);
+    return acc;
   }else{
     for (let index = 0; index < tree.length; index++) {
       const elem = tree[index];
-      accHeight += DFS(elem, accHeight);
+      acc = DFS(elem, acc);
     }
   }
-  return accHeight;
+  return acc;
 }
 
 
 onMounted(() => {
   const tree = document.getElementById('menu').childNodes;
-  console.log(tree);
   let accHeight = 0;
   for (let index = 0; index < tree.length; index++) {
     const elem = tree[index];
     elem.style.top = -accHeight + 'px';
     console.log(elem);
-    accHeight += DFS(elem, accHeight);
+    accHeight = DFS(elem, accHeight);
     console.log(accHeight);
+    break;
   }
 })
 
@@ -40,19 +47,20 @@ onMounted(() => {
 
 <template>
   <div>
+    <button @click="koo">hjk</button>
     <div class="menu" id="menu">
-      <div class="menu-elem">
+      <div class="menu-tab">
         <MenuElem :label="'tab 1 level 1'"/>
         <div class="sub-menu">
           <Menu/>
         </div>
       </div>
 
-      <div class="menu-elem">
+      <div class="menu-tab">
         <MenuElem :label="'tab 2 level 1'"/>
-        <div class="sub-menu">
+        <!-- <div class="sub-menu">
           <Menu/>
-        </div>
+        </div> -->
       </div>
       
     </div>
@@ -68,6 +76,8 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   z-index: 3;
+  width: 100%;
+  height: 1000px;
 }
 
 .sub-menu{
@@ -75,7 +85,7 @@ onMounted(() => {
   top: calc(-1.8em - 2px);
 }
 
-.menu-elem{
+.menu-tab{
   position: relative;
 }
 

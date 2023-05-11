@@ -93,7 +93,7 @@ import PageTitle from './PageTitle.vue'
   width: 100%;
   text-align: center;
   background-color: white;
-  border: 2px solid gray;
+  border: 1px solid gray;
 }
 
 .blind-mode:hover{

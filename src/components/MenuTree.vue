@@ -146,8 +146,9 @@ onMounted(() => {
 }
 
 .sub-menu{
-  left: calc(100%);
+  left: calc(100% - 1px);
   visibility: hidden;
+  border-top: 1px solid gray;
 }
 
 .tab{
@@ -162,7 +163,8 @@ onMounted(() => {
   font-size:larger;
   font-weight: normal;
   line-height: 1.3em;
-  border: 2px solid gray;
+  border: 1px solid gray;
+  border-top: 0px;
   cursor: pointer;
   padding: 5px;
   padding-left: 7px;

@@ -1,27 +1,27 @@
 <script setup>
 import MenuTree from './MenuTree.vue'
-import Post from './Post.vue'
-import PageTitle from './PageTitle.vue'
-
+import PostGrid from './PostGrid.vue'
+import PageHeader from './PageHeader.vue'
 </script>
-
 
 <template>
   <div class="page">
     <div class="top">
-      <div class="logo">МКУ "Центр поддержки образования" <br> МО Приморско-Ахтарский район</div>
+      <div class="logo">
+        МКУ "Центр поддержки образования" <br />
+        МО Приморско-Ахтарский район
+      </div>
     </div>
     <div class="body">
       <div class="aside">
         <div class="blind-mode">
-          <img src="../assets/slabovidyashie-3.png"/>
-          <label>Версия для слабовидящих</label>
+          <label>Версия для слабовидящих</label><img src="../assets/slabovidyashie-3.png" />
         </div>
-        <MenuTree/>
+        <MenuTree />
       </div>
       <div class="content">
-        <PageTitle :title="'Hello world!'"/>
-        <Post/>
+        <PageHeader class="page-header" title="Home" />
+        <PostGrid class="grid" />
       </div>
     </div>
     <div class="foot">
@@ -29,23 +29,22 @@ import PageTitle from './PageTitle.vue'
       <div>2023</div>
     </div>
   </div>
-  
 </template>
 
-
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;700&display=swap');
 
-.page{
+.page {
   display: block;
   justify-content: center;
   width: 1000px;
   background-color: bisque;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  margin: 7px;
 }
 
-.top{
+.top {
   background-color: orange;
 }
 
@@ -56,66 +55,70 @@ import PageTitle from './PageTitle.vue'
   text-align: left;
   height: 150px;
   background: repeat;
-  font-size: 3em;
+  font-size: 40px;
   line-height: normal;
-  margin-left: 0.5em;
+  margin-left: 2em;
 }
 
-.foot{
-  color:black;
+.foot {
+  color: black;
   background-color: orange;
   text-align: center;
 }
 
-.body{
+.body {
   display: flex;
-  min-height: 900px;
   height: fit-content;
-  font-family: 'PT Serif', serif;
 }
 
-.aside{
+.aside {
   width: 230px;
   min-height: 900px;
-  height: fit-content;
-  background-color: pink;
+  height: max-content;
+  background-color: burlywood;
   color: blue;
+  overflow-y: clip;
 }
 
-.content{
+.content {
   width: calc(100% - 230px);
   min-height: 900px;
   height: fit-content;
   background-color: greenyellow;
+  font-family: 'PT Serif', serif;
 }
 
-.blind-mode{
+.blind-mode {
   width: 100%;
   text-align: center;
   background-color: white;
   border: 1px solid gray;
 }
 
-.blind-mode:hover{
+.blind-mode:hover {
   cursor: pointer;
   transition: all 200ms;
   filter: blur(5px);
 }
 
-.blind-mode > img{
+.blind-mode > img {
   height: 100px;
   width: 100%;
 }
 
-.blind-mode > label{
-  font-size: larger;
-  font-family: 'PT Sans', serif;
+.blind-mode > label {
   color: #000;
-  line-height: 2em;
-  border: none;
-  outline: none;
-
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
 }
 
-
+.grid {
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+.page-header {
+  height: fit-content;
+}
 </style>

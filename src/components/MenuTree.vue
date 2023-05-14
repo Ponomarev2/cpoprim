@@ -125,7 +125,7 @@ onMounted(() => {
   z-index: 3;
   width: 100%;
   background-color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .menu > div {
@@ -158,8 +158,10 @@ onMounted(() => {
 }
 
 .menu-elem:hover {
+  color: navy;
+  /* text-decoration: underline; */
   background-color: lightgrey;
-  transition: background-color 200ms;
+  transition: all 200ms;
 }
 
 .sub-menu-icon {

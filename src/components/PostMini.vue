@@ -7,7 +7,7 @@ const msg = ref('Hello World!')
 <template>
   <div class="container">
     <div class="date">21-01-2023</div>
-    <h1>Заголовок</h1>
+    <a href="/post">Заголовок</a>
     <div class="text">
       Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо
       материальном носителе человеческая мысль; в общем плане связная и полная последовательность
@@ -37,6 +37,14 @@ const msg = ref('Hello World!')
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-h1 {
+a:hover{
+  color: black;
+  background-color: initial;
+  text-decoration: underline;
+}
+a{
+  width: fit-content;
+  color: #444444;
+  font-size: 30px;
 }
 </style>

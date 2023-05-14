@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import PostMini from './PostMini.vue'
 
-const msg = ref('Hello World!')
 </script>
 
 <template>

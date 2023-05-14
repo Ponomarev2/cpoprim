@@ -15,7 +15,8 @@ import PageHeader from './PageHeader.vue'
     <div class="body">
       <div class="aside">
         <div class="blind-mode">
-          <label>Версия для слабовидящих</label><img src="../assets/slabovidyashie-3.png" />
+          <img src="../assets/slabovidyashie-3.png" />
+          <label>Версия для слабовидящих</label>
         </div>
         <MenuTree />
       </div>
@@ -89,6 +90,7 @@ import PageHeader from './PageHeader.vue'
 }
 
 .blind-mode {
+  margin-bottom: 10px;
   width: 100%;
   text-align: center;
   background-color: white;

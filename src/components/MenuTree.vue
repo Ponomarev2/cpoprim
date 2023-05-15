@@ -2,10 +2,11 @@
 import { ref, reactive, onMounted } from 'vue'
 
 const menuTree = [
-  { name: 'Главная', subMenu: [] },
-  { name: 'Новости', subMenu: [] },
+  { name: 'Главная', link: '/', subMenu: [] },
+  { name: 'Новости', link: '/news', subMenu: [] },
   {
-    name: 'Сведения об организации',
+    name: 'Сведения об организации', 
+    link: '/',
     subMenu: [
       { name: 'Охрана труда', subMenu: [] },
       { name: 'Основные сведения', subMenu: [] },
@@ -17,6 +18,7 @@ const menuTree = [
   },
   {
     name: 'Направления работы',
+    link: '/',
     subMenu: [
       { name: 'Мероприятия', subMenu: [] },
       { name: 'Профориентация', subMenu: [] },
@@ -25,10 +27,10 @@ const menuTree = [
       { name: 'Организация перевозок', subMenu: [] }
     ]
   },
-  { name: 'Деятельность', subMenu: [] },
-  { name: 'Планы', subMenu: [] },
-  { name: 'Горячиe линии', subMenu: [] },
-  { name: 'Контакты', subMenu: [] }
+  { name: 'Деятельность', link: '/', subMenu: [] },
+  { name: 'Планы', link: '/', subMenu: [] },
+  { name: 'Горячиe линии', link: '/', subMenu: [] },
+  { name: 'Контакты', link: '/', subMenu: [] }
 ]
 
 function onMouseOver({ target }) {
@@ -98,7 +100,9 @@ onMounted(() => {
       @mouseleave="onMouseLeave"
     >
       <div class="menu-elem">
-        {{ item.name }}
+        <a :href="item.link">
+          {{ item.name }}
+        </a>
         <div v-if="item.subMenu.length > 0" class="sub-menu-icon">▶️</div>
       </div>
       <div v-if="item.subMenu.length > 0" class="sub-menu">
@@ -165,5 +169,15 @@ onMounted(() => {
 }
 
 .sub-menu-icon {
+}
+
+a{
+  color: inherit;
+}
+
+a:hover{
+  color: inherit;
+  text-decoration: underline;
+
 }
 </style>

@@ -7,10 +7,12 @@ import PageHeader from './PageHeader.vue'
 <template>
   <div class="page">
     <div class="top">
-      <div class="logo">
-        МКУ "Центр поддержки образования" <br />
-        МО Приморско-Ахтарский район
-      </div>
+      <a href="/">
+        <div class="logo" >
+          МКУ "Центр поддержки образования" <br />
+          МО Приморско-Ахтарский район
+        </div>
+      </a>
     </div>
     <div class="body">
       <div class="aside">

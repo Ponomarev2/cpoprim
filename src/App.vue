@@ -16,18 +16,21 @@
 import { RouterLink, RouterView } from 'vue-router'
 
 import MenuTree from './components/MenuTree.vue'
+import SideBanner1 from './components/SideBanner1.vue'
+import SideBanner2 from './components/SideBanner2.vue'
+import SideBanner3 from './components/SideBanner3.vue'
 import Home from './views/Home.vue'
 </script>
 
 <template>
   <div class="page">
     <div class="top">
-      <a href="/">
-        <div class="logo" >
+      <RouterLink to="/">
+        <div class="logo">
           МКУ "Центр поддержки образования" <br />
           МО Приморско-Ахтарский район
         </div>
-      </a>
+      </RouterLink>
     </div>
     <div class="body">
       <div class="aside">
@@ -36,9 +39,14 @@ import Home from './views/Home.vue'
           <label>Версия для слабовидящих</label>
         </div>
         <MenuTree />
+        <div class="aside-banners">
+          <SideBanner1 />
+          <SideBanner2 />
+          <SideBanner3 />
+        </div>
       </div>
       <div class="content">
-        <RouterView/>
+        <RouterView />
       </div>
     </div>
     <div class="foot">
@@ -59,13 +67,15 @@ import Home from './views/Home.vue'
   background-color: bisque;
   font-family: 'Montserrat', sans-serif;
   margin: 7px;
+  transition: all 900ms;
 }
 
 .top {
-  background-color: orange;
+  background-color: slategray;
 }
 
 .logo {
+  width: 100%;
   color: black;
   display: flex;
   align-items: center;
@@ -74,38 +84,39 @@ import Home from './views/Home.vue'
   background: repeat;
   font-size: 40px;
   line-height: normal;
-  margin-left: 2em;
+  padding: 2em;
 }
-
+.logo:hover {
+  background-color: steelblue;
+}
 .foot {
   color: black;
-  background-color: orange;
+  background-color: darkgray;
   text-align: center;
 }
 
 .body {
   display: flex;
-  height: fit-content;
 }
 
 .aside {
+  display: block;
   width: 230px;
   min-height: 900px;
-  background-color: burlywood;
-  color: blue;
+  background-color: lightsteelblue;
   overflow-y: clip;
 }
 
 .content {
   width: calc(100% - 230px);
   min-height: 900px;
-  height: fit-content;
-  background-color: greenyellow;
+  height: auto;
+  background-color: gainsboro;
   font-family: 'PT Serif', serif;
 }
 
 .blind-mode {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 100%;
   text-align: center;
   background-color: white;
@@ -121,6 +132,7 @@ import Home from './views/Home.vue'
 .blind-mode > img {
   height: 100px;
   width: 100%;
+  filter: blur(1px);
 }
 
 .blind-mode > label {
@@ -131,5 +143,14 @@ import Home from './views/Home.vue'
   font-weight: bold;
 }
 
-</style>
+.aside-banners {
+  margin: 5px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  position: relative;
+}
 
+.aside-banners > div {
+  margin-top: 5px;
+}
+</style>

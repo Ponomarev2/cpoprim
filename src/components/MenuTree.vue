@@ -50,7 +50,10 @@ function onMouseOver({ target }) {
 
 function onMouseLeave({ target }) {
   // console.log('leave', target);
-  if (target.childNodes.length > 1 && target.className === 'tab') {
+  if (target.childNodes.length > 1 &&
+      target.className === 'tab' && 
+      target.childNodes[1].className === 'sub-menu'
+  ) { 
     target.childNodes[1].style.visibility = 'hidden'
   }
 }
@@ -114,7 +117,7 @@ onMounted(() => {
       <div v-if="item.subMenu.length > 0" class="sub-menu">
         <div v-for="(item2, j) in item.subMenu" class="tab" @mouseleave="onMouseLeave">
           <div class="menu-elem">
-            <a href="item2.link">{{ item2.name }}</a>
+            <a :href="item2.link">{{ item2.name }}</a>
             <div v-if="item2.subMenu.length > 0" class="sub-menu-icon">▶️</div>
           </div>
           <div v-if="item2.subMenu.length > 0" class="sub-menu">

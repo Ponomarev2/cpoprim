@@ -31,7 +31,7 @@ const props = defineProps(['id', 'header', 'content', 'date'])
 }
 
 .container:hover {
-  background-color: peru;
+  background-color: silver;
 }
 
 .text {

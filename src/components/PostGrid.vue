@@ -2,12 +2,25 @@
 import { ref } from 'vue'
 import PostMini from './PostMini.vue'
 
+const props = defineProps(['count', 'items'])
 </script>
 
 <template>
   <div class="container">
-    <PostMini v-for="(item, i) in [1, 2, 3, 4, 5]" :key="i" />
+    <PostMini
+      v-if="props.items"
+      v-for="(item, i) in props.items"
+      :key="i"
+      :id="item.id"
+      :header="item.header"
+      :content="item.content"
+      :date="item.date"
+    />
+    <PostMini v-else v-for="(item, i) in [...Array(5).keys()]" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+}
+</style>

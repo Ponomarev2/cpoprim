@@ -1,16 +1,21 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const menuTree = [
   { name: 'Главная', link: '/', subMenu: [] },
   { name: 'Новости', link: '/news', subMenu: [] },
   {
-    name: 'Сведения об организации', 
+    name: 'Сведения об организации',
     link: '/',
     subMenu: [
       { name: 'Охрана труда', subMenu: [] },
       { name: 'Основные сведения', subMenu: [] },
-      { name: 'Противодействие коррупции', subMenu: [] },
+      {
+        name: 'Противодействие коррупции',
+        link: 'https://www.prahtarsk.ru/protivkor/',
+        subMenu: []
+      },
       { name: 'Структура', subMenu: [] },
       { name: 'Профсоюз', subMenu: [] },
       { name: 'Состав сотрудников и контактные данные', subMenu: [] }
@@ -78,10 +83,11 @@ onMounted(() => {
     // console.log(accHeight)
     if (element.className === 'tab') {
       element.style.top = -accHeight + 'px'
+      menuHeight += element.offsetHeight
     }
     if (element.childNodes.length > 1) {
       if (element.childNodes[1].className === 'sub-menu') {
-        menuHeight += element.childNodes[0].offsetHeight
+        menuHeight -= element.childNodes[1].offsetHeight
         accHeight += element.childNodes[1].offsetHeight
       }
     }
@@ -100,15 +106,15 @@ onMounted(() => {
       @mouseleave="onMouseLeave"
     >
       <div class="menu-elem">
-        <a :href="item.link">
+        <RouterLink :to="item.link">
           {{ item.name }}
-        </a>
+        </RouterLink>
         <div v-if="item.subMenu.length > 0" class="sub-menu-icon">▶️</div>
       </div>
       <div v-if="item.subMenu.length > 0" class="sub-menu">
         <div v-for="(item2, j) in item.subMenu" class="tab" @mouseleave="onMouseLeave">
           <div class="menu-elem">
-            {{ item2.name }}
+            <a href="item2.link">{{ item2.name }}</a>
             <div v-if="item2.subMenu.length > 0" class="sub-menu-icon">▶️</div>
           </div>
           <div v-if="item2.subMenu.length > 0" class="sub-menu">
@@ -124,12 +130,12 @@ onMounted(() => {
 
 <style scoped>
 .menu {
-  position: absolute;
+  position: relative;
   display: block;
   z-index: 3;
   width: 100%;
   background-color: white;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .menu > div {
@@ -171,13 +177,13 @@ onMounted(() => {
 .sub-menu-icon {
 }
 
-a{
+a {
+  width: 100%;
   color: inherit;
 }
 
-a:hover{
+a:hover {
   color: inherit;
   text-decoration: underline;
-
 }
 </style>

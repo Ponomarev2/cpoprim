@@ -5,14 +5,12 @@ import PostBody from '../components/PostBody.vue'
 
 <template>
   <main>
-    <PageHeader class="page-header" title="Post" />
-    <PostBody class="body"/>
+    <!-- <PageHeader class="page-header" title="Статья" /> -->
+    <PostBody class="body" />
   </main>
 </template>
 
 <style scoped>
-
-
 .page-header {
   height: fit-content;
 }
@@ -20,5 +18,4 @@ import PostBody from '../components/PostBody.vue'
 .body {
   margin: 40px;
 }
-
 </style>

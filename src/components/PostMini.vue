@@ -8,7 +8,9 @@ const props = defineProps(['id', 'header', 'content', 'date'])
 <template>
   <div class="container">
     <div class="date">{{ props.date ? props.date : '21-03-2023' }}</div>
-    <RouterLink v-if="props.header" :to="'/post/' + props.id">{{ props.header }}</RouterLink>
+    <RouterLink v-if="props.header" :to="'/post/' + props.id" :id="props.id">
+      {{ props.header }}
+    </RouterLink>
     <RouterLink v-else="props.header" to="/post/key">Заголовок</RouterLink>
     <div class="text">
       {{
@@ -22,6 +24,7 @@ const props = defineProps(['id', 'header', 'content', 'date'])
 
 <style scoped>
 .container {
+  cursor: default;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -32,6 +35,7 @@ const props = defineProps(['id', 'header', 'content', 'date'])
 
 .container:hover {
   background-color: silver;
+  transition: all 500ms;
 }
 
 .text {
@@ -50,6 +54,7 @@ a:hover {
   color: black;
   background-color: initial;
   text-decoration: underline;
+  transition: text-decoration 1s;
 }
 a {
   width: fit-content;

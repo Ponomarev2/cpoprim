@@ -1,17 +1,3 @@
-<!-- <template>
-  <Home/>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
-</template> -->
-
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 
@@ -19,6 +5,7 @@ import MenuTree from './components/MenuTree.vue'
 import SideBanner1 from './components/SideBanner1.vue'
 import SideBanner2 from './components/SideBanner2.vue'
 import SideBanner3 from './components/SideBanner3.vue'
+import SideBanner4 from './components/SideBanner4.vue'
 import Home from './views/Home.vue'
 </script>
 
@@ -43,6 +30,7 @@ import Home from './views/Home.vue'
           <SideBanner1 />
           <SideBanner2 />
           <SideBanner3 />
+          <!-- <SideBanner4 /> -->
         </div>
       </div>
       <div class="content">
@@ -67,11 +55,10 @@ import Home from './views/Home.vue'
   background-color: bisque;
   font-family: 'Montserrat', sans-serif;
   margin: 7px;
-  transition: all 900ms;
 }
 
 .top {
-  background-color: slategray;
+  background-color: #cccccc;
 }
 
 .logo {
@@ -111,7 +98,7 @@ import Home from './views/Home.vue'
   width: calc(100% - 230px);
   min-height: 900px;
   height: auto;
-  background-color: gainsboro;
+  background-color: #eeeeee;
   font-family: 'PT Serif', serif;
 }
 

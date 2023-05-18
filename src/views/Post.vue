@@ -1,12 +1,14 @@
 <script setup>
 import PageHeader from '../components/PageHeader.vue'
 import PostBody from '../components/PostBody.vue'
+
+const props = defineProps(['id'])
 </script>
 
 <template>
   <main>
     <!-- <PageHeader class="page-header" title="Статья" /> -->
-    <PostBody class="body" />
+    <PostBody class="body" :id="props.id" />
   </main>
 </template>
 

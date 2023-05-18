@@ -12,7 +12,8 @@ const props = defineProps(['title'])
 
 <style scoped>
 .box {
-  background-color: lightgray;
+  background-color: #dddddd;
   text-align: center;
+  /* border-top: 1px solid gray; */
 }
 </style>

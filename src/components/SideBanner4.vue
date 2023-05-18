@@ -4,10 +4,13 @@ import { ref } from 'vue'
 
 <template>
   <div>
-    <a href="https://admkrai.krasnodar.ru/">
+    <a
+      href="https://krd.ru/administratsiya/administratsii-krasnodara/upravlenie-po-delam-molodezhi/"
+    >
       <img
+        title="Управление по делам молодежи"
         class="banner-img"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8r-fjngJtdAe9ixyanCBJG6-1nso-pK_IVQ&usqp=CAU"
+        src="https://krd.ru/upload/medialibrary/035/tsi2acqa2p8yx66sti2qcjnmf3gml2iz/IMG_0518.PNG"
       />
     </a>
   </div>

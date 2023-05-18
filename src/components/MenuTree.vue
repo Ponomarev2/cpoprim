@@ -32,7 +32,17 @@ const menuTree = [
       { name: 'Организация перевозок', subMenu: [] }
     ]
   },
-  { name: 'Деятельность', link: '/', subMenu: [] },
+  {
+    name: 'Деятельность',
+    link: '/',
+    subMenu: [
+      { name: 'Приказы', link: '', route: '/', subMenu: [] },
+      { name: 'Конкурсы', link: '', route: '/', subMenu: [] },
+      { name: 'Семинары', link: '', route: '/', subMenu: [] },
+      { name: 'Разговоры о важном', link: '', route: '/', subMenu: [] },
+      { name: 'Методическая копилка', link: '', route: '/', subMenu: [] }
+    ]
+  },
   { name: 'Планы', link: '/', subMenu: [] },
   { name: 'Горячиe линии', link: '/', subMenu: [] },
   { name: 'Контакты', link: '/', subMenu: [] }
@@ -50,10 +60,11 @@ function onMouseOver({ target }) {
 
 function onMouseLeave({ target }) {
   // console.log('leave', target);
-  if (target.childNodes.length > 1 &&
-      target.className === 'tab' && 
-      target.childNodes[1].className === 'sub-menu'
-  ) { 
+  if (
+    target.childNodes.length > 1 &&
+    target.className === 'tab' &&
+    target.childNodes[1].className === 'sub-menu'
+  ) {
     target.childNodes[1].style.visibility = 'hidden'
   }
 }
@@ -109,15 +120,14 @@ onMounted(() => {
       @mouseleave="onMouseLeave"
     >
       <div class="menu-elem">
-        <RouterLink :to="item.link">
-          {{ item.name }}
-        </RouterLink>
+        <RouterLink :to="item.link">{{ item.name }}</RouterLink>
         <div v-if="item.subMenu.length > 0" class="sub-menu-icon">▶️</div>
       </div>
       <div v-if="item.subMenu.length > 0" class="sub-menu">
         <div v-for="(item2, j) in item.subMenu" class="tab" @mouseleave="onMouseLeave">
           <div class="menu-elem">
-            <a :href="item2.link">{{ item2.name }}</a>
+            <RouterLink v-if="item2.route" :to="item2.route">{{ item2.name }}</RouterLink>
+            <a v-else :href="item2.link">{{ item2.name }}</a>
             <div v-if="item2.subMenu.length > 0" class="sub-menu-icon">▶️</div>
           </div>
           <div v-if="item2.subMenu.length > 0" class="sub-menu">

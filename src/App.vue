@@ -1,4 +1,5 @@
 <script setup>
+import { shallowRef } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 
 import MenuTree from './components/MenuTree.vue'
@@ -7,6 +8,8 @@ import SideBanner2 from './components/SideBanner2.vue'
 import SideBanner3 from './components/SideBanner3.vue'
 import SideBanner4 from './components/SideBanner4.vue'
 import Home from './views/Home.vue'
+
+const current = shallowRef(Home)
 </script>
 
 <template>
@@ -15,7 +18,7 @@ import Home from './views/Home.vue'
       <RouterLink to="/">
         <div class="logo">
           МКУ "Центр поддержки образования" <br />
-          МО Приморско-Ахтарский район
+          г. Приморско-Ахтарск
         </div>
       </RouterLink>
     </div>
@@ -34,7 +37,11 @@ import Home from './views/Home.vue'
         </div>
       </div>
       <div class="content">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <KeepAlive include="Contacts">
+            <component :is="Component"></component>
+          </KeepAlive>
+        </RouterView>
       </div>
     </div>
     <div class="foot">
@@ -66,7 +73,7 @@ import Home from './views/Home.vue'
   color: black;
   display: flex;
   align-items: center;
-  text-align: left;
+  text-align: center;
   height: 150px;
   background: repeat;
   font-size: 40px;

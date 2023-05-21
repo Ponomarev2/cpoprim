@@ -3,17 +3,17 @@ import { ref, reactive, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const menuTree = [
-  { name: 'Главная', link: '/', subMenu: [] },
-  { name: 'Новости', link: '/news', subMenu: [] },
+  { name: 'Главная', route: '/', subMenu: [] },
+  { name: 'Новости', route: '/news', subMenu: [] },
   {
-    name: 'Сведения об организации',
-    link: '/',
+    name: 'О МКУ ЦПО',
+    route: '/',
     subMenu: [
       { name: 'Охрана труда', subMenu: [] },
       { name: 'Основные сведения', subMenu: [] },
       {
         name: 'Противодействие коррупции',
-        link: 'https://www.prahtarsk.ru/protivkor/',
+        route: 'https://www.prahtarsk.ru/protivkor/',
         subMenu: []
       },
       { name: 'Структура', subMenu: [] },
@@ -23,7 +23,7 @@ const menuTree = [
   },
   {
     name: 'Направления работы',
-    link: '/',
+    route: '/',
     subMenu: [
       { name: 'Мероприятия', subMenu: [] },
       { name: 'Профориентация', subMenu: [] },
@@ -34,7 +34,7 @@ const menuTree = [
   },
   {
     name: 'Деятельность',
-    link: '/',
+    route: '/',
     subMenu: [
       { name: 'Приказы', link: '', route: '/', subMenu: [] },
       { name: 'Конкурсы', link: '', route: '/', subMenu: [] },
@@ -43,9 +43,9 @@ const menuTree = [
       { name: 'Методическая копилка', link: '', route: '/', subMenu: [] }
     ]
   },
-  { name: 'Планы', link: '/', subMenu: [] },
-  { name: 'Горячиe линии', link: '/', subMenu: [] },
-  { name: 'Контакты', link: '/', subMenu: [] }
+  { name: 'Планы', route: '/', subMenu: [] },
+  { name: 'Горячиe линии', route: '/hotlines', subMenu: [] },
+  { name: 'Контакты', route: '/contacts', subMenu: [] }
 ]
 
 function onMouseOver({ target }) {
@@ -120,7 +120,8 @@ onMounted(() => {
       @mouseleave="onMouseLeave"
     >
       <div class="menu-elem">
-        <RouterLink :to="item.link">{{ item.name }}</RouterLink>
+        <RouterLink v-if="item.route" :to="item.route">{{ item.name }}</RouterLink>
+        <a v-else :href="item.link">{{ item.name }}</a>
         <div v-if="item.subMenu.length > 0" class="sub-menu-icon">▶️</div>
       </div>
       <div v-if="item.subMenu.length > 0" class="sub-menu">
@@ -167,9 +168,8 @@ onMounted(() => {
 .menu-elem {
   display: flex;
   width: calc(100% - 2px);
-  height: min-content;
   color: rgb(9, 2, 40);
-  font-size: normal;
+  height: max-content;
   line-height: 18px;
   outline: 1px solid gray;
   cursor: pointer;
@@ -182,7 +182,6 @@ onMounted(() => {
 
 .menu-elem:hover {
   color: navy;
-  /* text-decoration: underline; */
   background-color: lightgrey;
   transition: all 200ms;
 }

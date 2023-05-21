@@ -39,7 +39,7 @@ const props = defineProps(['id'])
 }
 
 .container {
-  background-color: burlywood;
+  background-color: whitesmoke;
   margin-top: 20px;
 }
 .text {

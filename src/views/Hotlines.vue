@@ -98,6 +98,4 @@ ul {
   font-weight: bold;
 }
 
-li {
-}
 </style>
